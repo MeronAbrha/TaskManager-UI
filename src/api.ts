@@ -1,7 +1,7 @@
 import axios from "axios";
 import { TaskManager } from "./types";
 
-const API_BASE_URL = "http://localhost:8080/tasks";
+const API_BASE_URL = "http://backend:8080/tasks";
 
 export const getTasks = async (): Promise<TaskManager[]> => {
   const res = await axios.get(API_BASE_URL);
