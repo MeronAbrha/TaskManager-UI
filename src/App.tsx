@@ -12,6 +12,10 @@ function App() {
     setTasks(data);
   };
 
+  const deleteTask = async () => {
+    //load upadate tasks.
+    fetchTasks();
+  };
   useEffect(() => {
     fetchTasks();
   }, []);
@@ -20,7 +24,11 @@ function App() {
     <div style={{ padding: "2rem" }}>
       <h1>Task Manager</h1>
       <AddTask onTaskCreated={fetchTasks} />
-      <TaskManagerList tasks={tasks} onUpdate={fetchTasks} />
+      <TaskManagerList
+        tasks={tasks}
+        onUpdate={fetchTasks}
+        onDelete={deleteTask}
+      />
     </div>
   );
 }

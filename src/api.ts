@@ -8,11 +8,12 @@ export const getTasks = async (): Promise<TaskManager[]> => {
   return res.data;
 };
 
-export const createTask = async (title: string): Promise<TaskManager> => {
-  const res = await axios.post<TaskManager>(API_BASE_URL, {
-    title,
-    status: "TODO",
-  });
+export const createTask = async (task: {
+  title: string;
+  discription?: string;
+  status: "TODO";
+}): Promise<TaskManager> => {
+  const res = await axios.post<TaskManager>(API_BASE_URL, task);
   return res.data;
 };
 
@@ -20,4 +21,8 @@ export const markTaskDone = async (id: string): Promise<void> => {
   await axios.put(`${API_BASE_URL}/${id}`, {
     status: "DONE",
   });
+};
+
+export const deleteTask = async (id: string): Promise<void> => {
+  await axios.delete(`${API_BASE_URL}/${id}`);
 };
